@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,60 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DynamicTextViewHeight" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q3u-f7-7f3">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="giX-Qw-iTh" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lek-yR-T4A" customClass="GrowingTextView" customModule="DynamicTextViewHeight" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="16" width="359" height="100"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut </string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="lek-yR-T4A" firstAttribute="top" secondItem="giX-Qw-iTh" secondAttribute="top" constant="16" id="RwH-tO-ipm"/>
+                                            <constraint firstItem="lek-yR-T4A" firstAttribute="leading" secondItem="giX-Qw-iTh" secondAttribute="leading" constant="8" id="UnP-4O-ipe"/>
+                                            <constraint firstAttribute="trailing" secondItem="lek-yR-T4A" secondAttribute="trailing" constant="8" id="dFY-jc-Qgg"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="giX-Qw-iTh" firstAttribute="top" secondItem="Q3u-f7-7f3" secondAttribute="top" id="9PX-yC-Tcg"/>
+                                    <constraint firstAttribute="trailing" secondItem="giX-Qw-iTh" secondAttribute="trailing" id="mW4-iW-xKp"/>
+                                    <constraint firstItem="giX-Qw-iTh" firstAttribute="leading" secondItem="Q3u-f7-7f3" secondAttribute="leading" id="sFg-pp-aeS"/>
+                                    <constraint firstAttribute="bottom" secondItem="giX-Qw-iTh" secondAttribute="bottom" id="xhp-hr-su6"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Q3u-f7-7f3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="HYG-9B-qtv"/>
+                            <constraint firstItem="giX-Qw-iTh" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="km7-Sg-aEC"/>
+                            <constraint firstItem="Q3u-f7-7f3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mxZ-6Q-XGu"/>
+                            <constraint firstItem="Q3u-f7-7f3" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ufH-Ec-fVK"/>
+                            <constraint firstItem="giX-Qw-iTh" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" priority="750" id="xpL-Pf-yx1"/>
+                            <constraint firstItem="Q3u-f7-7f3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="zqw-Y2-pY8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="scrollView" destination="Q3u-f7-7f3" id="Mgd-A8-V3X"/>
+                        <outlet property="textView" destination="lek-yR-T4A" id="4if-l2-4OF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="116" y="117.39130434782609"/>
         </scene>
     </scenes>
 </document>
